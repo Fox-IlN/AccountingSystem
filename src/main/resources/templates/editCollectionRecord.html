@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Район</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script th:inline="javascript" th:src="@{/js/FunctionForAutoHint.js}"></script>
+</head>
+<body>
+<header th:insert="~{blocks/header :: header}"></header>
+
+<div class="container mt-5 mb-5">
+    <form action="#" th:action="@{'/collectionRecord/' +${collectionRecord.id}}" th:object="${collectionRecord}" method="post">
+        <div class="row gy-3">
+          <span class="badge text-bg-danger rounded-pill"
+                th:if="${#fields.allErrors()}"
+                th:errors="*{uniqueKey}"
+          ></span>
+            <div class="col-md-5" id="navbar-sub-speciesList">
+                <input type="text" id="speciesListName" th:value="*{species?.name}" placeholder="Вид" class="form-control" oninput="autoHint('editSpeciesListId', this.id, this.parentNode.id)">
+                <input type="hidden" id="editSpeciesListId" th:field="*{species}">
+            </div>
+
+            <!--            <div class="col-md-5" >
+                            <select class="form-select" th:field="*{species}">
+                                <option th:each="species : ${speciesList}" th:value="${species.id}" th:text="${species.value}"></option>
+                            </select>
+                        </div>-->
+
+
+            <div class="col-md-5">
+                <textarea th:field="*{associatedSpecies}" placeholder="Сопутствующий вид" class="form-control"></textarea><br>
+            </div>
+<!--            <div class="col-md-5" id="navbar-sub-associatedSpeciesList">
+                <input type="text" id="associatedSpeciesListName" th:value="*{associatedSpecies?.name}" placeholder="Сопутствующий вид" class="form-control" oninput="autoHint('associatedSpeciesListId', this.id, this.parentNode.id)">
+                <input type="hidden" id="associatedSpeciesListId" th:field="*{associatedSpecies}">
+            </div>-->
+
+            <!--            <div class="col-md-5" >
+                            <select class="form-select" th:field="*{associatedSpecies}">
+                                <option th:each="associatedSpecies : ${associatedSpeciesList}" th:value="${associatedSpecies.id}" th:text="${associatedSpecies.name}"></option>
+                            </select>
+                        </div>-->
+
+            <div class="col-md-5" >
+                <select class="form-select" th:field="*{region}">
+                    <option th:value="null">Регоин</option>
+                    <option th:each="region : ${regionList}" th:value="${region.id}" th:text="${region.name}"></option>
+                </select>
+            </div>
+
+            <div class="col-md-5" id="navbar-sub-districtList">
+                <input type="text" id="districtListName" th:value="*{district?.name}" placeholder="Округ" class="form-control" oninput="autoHint('districtListId', this.id, this.parentNode.id)">
+                <input type="hidden" id="districtListId" th:field="*{district}">
+            </div>
+
+            <!--            <div class="col-md-5" >
+                            <select class="form-select" th:field="*{district}">
+                                <option th:each="district : ${districtList}" th:value="${district.id}" th:text="${district.name}"></option>
+                            </select>
+                        </div>-->
+
+            <div class="col-md-5">
+                <textarea th:field="*{localityExact}" placeholder="Точное местонахождение" class="form-control"></textarea><br>
+            </div>
+
+            <div class="col-md-5">
+                <textarea th:field="*{habitat}" placeholder="Среда обитания" class="form-control"></textarea><br>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <input type="text" th:field="*{altitude}" placeholder="Высота" class="form-control"><br>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <input type="text" th:field="*{latitude}" placeholder="Широта" class="form-control"><br>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <input type="text" th:field="*{longitude}" placeholder="Долгота" class="form-control"><br>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <input type="date" th:field="*{collectionDate}" class="form-control"><br>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <input type="text" th:field="*{collectorBy}" placeholder="Кем собрано" class="form-control"><br>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <input type="text" th:field="*{identifiedBy}" placeholder="Кем идентифицировано" class="form-control"><br>
+            </div>
+
+            <div class="col-6 col-md-4" >
+                <select class="form-select" th:field="*{herbariumLocation}">
+                    <option th:value="null" >Местонахождение гербария (Неизвестно)</option>
+                    <option th:each="herbariumLocation : ${herbariumLocationList}" th:value="${herbariumLocation.id}" th:text="${herbariumLocation.name}"></option>
+                </select>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <input type="text" th:field="*{presenceSporophyte}" placeholder="Наличие спорофита" class="form-control"><br>
+            </div>
+
+            <div class="col-6 col-md-4">
+                <input type="text" th:field="*{uniqueKey}" placeholder="Инвентарный номер " class="form-control"><br>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Изменить</button>
+    </form>
+</div>
+
+</body>
+</html>

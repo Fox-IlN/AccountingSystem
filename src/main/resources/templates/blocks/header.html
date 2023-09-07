@@ -1,0 +1,20 @@
+<div th:fragment="header">
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <strong>Главная страница</strong>
+            </a>
+            <a href="/directory" class="navbar-brand d-flex align-items-center">
+                <strong>Справочники</strong>
+            </a>
+            <a href="/search" class="navbar-brand d-flex align-items-center">
+                <strong>Выборка данных</strong>
+            </a>
+            <a>
+                <form th:action="@{/logout}" method="post">
+                    <input class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" value="Выйти"/>
+                </form>
+            </a>
+        </div>
+    </div>
+</div>

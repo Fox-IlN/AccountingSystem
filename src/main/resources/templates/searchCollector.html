@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Поиск по коллектору</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <script th:inline="javascript" th:src="@{/js/FunctionForAutoHint.js}"></script>
+
+</head>
+<body>
+<header th:insert="~{blocks/header :: header}"></header>
+
+<div class="container col-sm-12 mt-5 mb-5">
+    <form action="#" autocomplete="off" th:action="@{'/collectionRecord/searchByCollector'}" method="GET">
+        <div class="row gy-3">
+
+            <div class="col-6 col-md-4">
+                <input type="text" name="keyword" th:value="${keyword}" placeholder="Кем собрано" class="form-control"><br>
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-success">Поиск</button>
+    </form>
+    <span class="mb-3 mb-md-0 text-body-secondary" th:text="${'Количество найденных записей: ' + collectionRecordCount }"></span>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr style="border-bottom:1px solid black">
+        <th>Вид</th>
+        <th>Сопутствующий вид</th>
+        <th>Регион</th>
+        <th>Район</th>
+        <th>Точное местонахождение</th>
+        <th>Среда обитания</th>
+        <th>Высота</th>
+        <th>Широта</th>
+        <th>Долгота</th>
+        <th>Дата сбора</th>
+        <th>Кем собрано</th>
+        <th>Кем идентифицированно</th>
+        <th>Местонахождение гербария</th>
+        <th>Наличие спорофита</th>
+        <th>Инвентарный номер</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tr th:each="coll:${collectionRecord}" style="border-bottom: 1px dotted black">
+        <td th:text="${coll?.species?.name}"></td>
+        <td th:text="${coll.associatedSpecies}"></td>
+        <td th:text="${coll?.region?.name}"></td>
+        <td th:text="${coll?.district?.name}"></td>
+        <td th:text="${coll.localityExact}"></td>
+        <td th:text="${coll.habitat}"></td>
+        <td th:text="${coll.altitude}"></td>
+        <td th:text="${coll.latitude}"></td>
+        <td th:text="${coll.longitude}"></td>
+        <td th:text="${coll.collectionDate}"></td>
+        <td th:text="${coll.collectorBy}"></td>
+        <td th:text="${coll.identifiedBy}"></td>
+        <td th:text="${coll?.herbariumLocation?.name}"></td>
+        <td th:text="${coll.presenceSporophyte}"></td>
+        <td th:text="${coll.uniqueKey}"></td>
+
+        <td>
+            <form th:action="'/collectionRecord/' + ${coll.id} + '/edit'" method="post">
+                <button class="btn btn-warning" type="submit">Изменить</button>
+            </form>
+        <td>
+            <form th:action="'/collectionRecord/' + ${coll.id} + '/remove'" method="post">
+                <button class="btn btn-warning" type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

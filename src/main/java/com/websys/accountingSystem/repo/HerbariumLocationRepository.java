@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface HerbariumLocationRepository  extends CrudRepository<HerbariumLocation, Long> {
-    Optional<HerbariumLocation> findByName(String name);
+public interface HerbariumLocationRepository  extends CrudRepository<HerbariumLocation, Long>,IFindByName<HerbariumLocation> {
+
 }

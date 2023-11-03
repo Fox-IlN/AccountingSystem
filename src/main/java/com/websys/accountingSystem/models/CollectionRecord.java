@@ -38,31 +38,14 @@ public class CollectionRecord {
     @ManyToOne
     private District district;
 
-    @ManyToOne/*
-    @JsonIdentityReference(alwaysAsId = true)*/
+    @ManyToOne
     private Species species;
 
 
     private String associatedSpecies;
-/*    @ManyToOne
-    private AssociatedSpecies associatedSpecies;*/
 
     @ManyToOne
     private HerbariumLocation herbariumLocation;
-
-    /*@ManyToMany
-    @JoinTable(name = "collectionRecordCollectorBy",
-            joinColumns = @JoinColumn(name = "collectionRecordId"),
-            inverseJoinColumns = @JoinColumn(name = "employeeId")
-    )
-    private Set<Employee> collectorBy = new HashSet<>();*/
-
-    /*@ManyToMany
-    @JoinTable(name = "collectionRecordIdentifiedBy",
-            joinColumns = @JoinColumn(name = "collectionRecordId"),
-            inverseJoinColumns = @JoinColumn(name = "employeeId")
-    )
-    private Set<Employee> identifiedBy = new HashSet<>();*/
 
     private String collectorBy;
 
@@ -79,15 +62,8 @@ public class CollectionRecord {
     private String longitude;
 
     @Temporal(TemporalType.DATE)
-    private Date collectionDate;/*
-    private String collectionDate;*/
-
-    private String presenceSporophyte;
-
-/*    @Temporal(TemporalType.DATE)
     private Date collectionDate;
 
-    @AssertFalse
-    private Boolean presenceSporophyte;*/
+    private String presenceSporophyte;
 
 }

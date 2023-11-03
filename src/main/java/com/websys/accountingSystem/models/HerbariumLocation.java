@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
-public class HerbariumLocation {
+public class HerbariumLocation implements ComboListItem{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

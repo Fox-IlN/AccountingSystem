@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public interface CollectionRecordRepository  extends JpaRepository<CollectionRecord, Long> {
+public interface CollectionRecordRepository extends JpaRepository<CollectionRecord, Long> {
 
 
     List<CollectionRecord> findByOrderByIdDesc();

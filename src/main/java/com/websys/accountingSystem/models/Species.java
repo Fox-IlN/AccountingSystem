@@ -21,7 +21,7 @@ import java.util.List;
         resolver = EntityIdResolver.class,
         property = "id"
 )
-public class Species implements ComboListItem {
+public class Species implements ComboListItem  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

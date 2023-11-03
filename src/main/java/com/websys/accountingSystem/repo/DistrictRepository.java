@@ -6,8 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface DistrictRepository  extends CrudRepository<District, Long> {
+public interface DistrictRepository  extends CrudRepository<District, Long>, IGetListByNameStartingWithLetters<District>, IFindByName<District> {
 
-    List<District> findByNameStartingWith(String input);
-    Optional<District> findByName(String name);
 }

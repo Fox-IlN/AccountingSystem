@@ -8,4 +8,5 @@ import lombok.Data;
 public class ListItemDto {
     private Long id;
     private String value;
+
 }
